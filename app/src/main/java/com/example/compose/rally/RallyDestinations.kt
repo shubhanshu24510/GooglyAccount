@@ -36,11 +36,19 @@ object SingleAccount : RallyDestination {
     const val accountTypeArg = "account_type"
     val routeWithArgs = "$route/{$accountTypeArg}"
     val arguments = listOf(
-        navArgument(accountTypeArg) { type = NavType.StringType }
-    )
+        navArgument(accountTypeArg) { type = NavType.StringType })
     val deepLinks = listOf(
-        navDeepLink { uriPattern = "rally://$route/{$accountTypeArg}" }
-    )
+        navDeepLink { uriPattern = "rally://$route/{$accountTypeArg}" })
+}
+object SingleBill : RallyDestination {
+    override val icon = Icons.Filled.Money
+    override val route = "single_bill"
+    const val billTypeArg= "bill_type"
+    val routeWithArgs = "$route/{$billTypeArg}"
+    val arguments = listOf(
+        navArgument(billTypeArg) { type = NavType.StringType })
+    val deepLinks = listOf(
+        navDeepLink { uriPattern = "rally://$route/{$billTypeArg}" })
 }
 
 

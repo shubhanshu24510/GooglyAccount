@@ -1,19 +1,3 @@
-/*
- * Copyright 2022 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.compose.rally.ui.components
 
 import androidx.compose.foundation.background
@@ -44,10 +28,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import com.example.compose.rally.R
 import java.text.DecimalFormat
-
-/**
- * A row representing the basic information of an Account.
- */
 @Composable
 fun AccountRow(
     modifier: Modifier = Modifier,
@@ -66,12 +46,15 @@ fun AccountRow(
     )
 }
 
-/**
- * A row representing the basic information of a Bill.
- */
+
 @Composable
-fun BillRow(name: String, due: String, amount: Float, color: Color) {
+fun BillRow(modifier: Modifier =Modifier,
+            name: String,
+            due: String,
+            amount: Float,
+            color: Color) {
     BaseRow(
+        modifier =modifier,
         color = color,
         title = name,
         subtitle = "Due $due",
@@ -142,9 +125,7 @@ private fun BaseRow(
     RallyDivider()
 }
 
-/**
- * A vertical colored line that is used in a [BaseRow] to differentiate accounts.
- */
+
 @Composable
 private fun AccountIndicator(color: Color, modifier: Modifier = Modifier) {
     Spacer(
@@ -166,9 +147,7 @@ fun formatAmount(amount: Float): String {
 private val AccountDecimalFormat = DecimalFormat("####")
 private val AmountDecimalFormat = DecimalFormat("#,###.##")
 
-/**
- * Used with accounts and bills to create the animated circle.
- */
+
 fun <E> List<E>.extractProportions(selector: (E) -> Float): List<Float> {
     val total = this.sumOf { selector(it).toDouble() }
     return this.map { (selector(it) / total).toFloat() }

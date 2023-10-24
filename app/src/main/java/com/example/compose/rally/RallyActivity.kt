@@ -1,6 +1,7 @@
 
 package com.example.compose.rally
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +25,7 @@ class RallyActivity : ComponentActivity() {
 }
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun RallyApp() {
     RallyTheme {
@@ -43,10 +45,9 @@ fun RallyApp() {
                     currentScreen = currentScreen
                 )
             }
-        ) { innerPadding ->
+        ) {
             RallyNavHost(
-                navController = navController,
-                modifier = Modifier.padding(innerPadding)
+                navController = navController
             )
         }
     }
